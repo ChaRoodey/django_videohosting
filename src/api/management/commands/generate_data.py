@@ -15,7 +15,7 @@ class Command(BaseCommand):
         users = []
 
         # 10k users
-        for i in range(100):
+        for i in range(10000):
             u = User.objects.create_user(
                 username=f"user{i}",
                 password="test123"
@@ -25,7 +25,7 @@ class Command(BaseCommand):
         videos = []
 
         # 100k videos
-        for i in range(100):
+        for i in range(100000):
             v = Video.objects.create(
                 owner=random.choice(users),
                 name=f"video_{i}",
@@ -36,7 +36,7 @@ class Command(BaseCommand):
 
         # realistic likes
         for v in videos:
-            for _ in range(random.randint(0, 5)):
+            for _ in range(random.randint(0, 20)):
                 Like.objects.get_or_create(
                     video=v,
                     user=random.choice(users)
